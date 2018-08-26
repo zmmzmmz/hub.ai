@@ -23,4 +23,35 @@ class AI {
       return data
     })
   }
+
+  /**
+   * 获取所有词库
+   * @returns {PromiseLike<T> | Promise<T>}
+   */
+  fetchEntities () {
+    return axios.get(`http://api.yige.ai/v1/entities`).then(data => {
+      return data
+    })
+  }
+
+  /**
+   * 获取单个词库
+   * @param eid <String> 词库id
+   */
+  fetchEntity (eid) {
+    return axios.get(`http://api.yige.ai/v1/entity${eid}`).then(data => {
+      return data
+    })
+  }
+
+  /**
+   * 添加词库
+   */
+  createEntity () {
+    return axios.post(`'/entities`, {}).then(data => {
+      return data
+    })
+  }
 }
+
+module.exports = new AI()
