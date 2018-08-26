@@ -1,0 +1,11 @@
+node_modules/
+dist/
+logs/*
+public/
+.vscode/
+.idea/
+*.log
+cert.json
+package-lock.json
+
+modules/bucket.yml

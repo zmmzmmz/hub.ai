@@ -1,0 +1,37 @@
+{
+  "name": "hub.ai",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon ./app.js",
+    "prd": "pm2 start ./app.js -i 0 --name \"AI\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/petterstrong/hub.ai.git"
+  },
+  "keywords": [
+    "bot"
+  ],
+  "author": "petterstrong",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/petterstrong/hub.ai/issues"
+  },
+  "homepage": "https://github.com/petterstrong/hub.ai#readme",
+  "dependencies": {
+    "axios": "^0.18.0",
+    "body-parser": "^1.18.3",
+    "express": "^4.16.3",
+    "socket.io": "^2.1.1",
+    "winston": "^3.0.0"
+  },
+  "devDependencies": {
+    "babel-core": "^6.26.3",
+    "babel-plugin-transform-async-to-generator": "^6.24.1",
+    "babel-plugin-transform-runtime": "^6.23.0",
+    "babel-preset-env": "^1.7.0",
+    "nodemon": "^1.18.3"
+  }
+}
