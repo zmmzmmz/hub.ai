@@ -1,6 +1,7 @@
 const express = require('express');
 const crypto = require('crypto');
 const logger = require('../utils/logger');
+const axios = require('axios');
 const router = express.Router();
 const token = 'weixin'
 
@@ -18,6 +19,8 @@ router.get('/', async (req, res) => {
     logger.warn('receive auth message, but mismatch');
     res.send('mismatch');
   }
+}).get('/token', async (req, res) => {
+  axios.get('')
 })
 
 module.exports = router;
