@@ -5,7 +5,7 @@ public/
 .vscode/
 .idea/
 *.log
-cert.json
+cert.*
 package-lock.json
 
 modules/bucket.yml

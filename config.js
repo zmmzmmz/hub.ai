@@ -1,3 +1,5 @@
+// const fs = require('fs');
+
 module.exports = {
   wechatConfig: {
     appid: 'wxd4b7dad7ab60a025',

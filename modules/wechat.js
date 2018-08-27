@@ -21,5 +21,10 @@ class Wechat {
    */
   handleAuth () {
   }
+}
+
+
+function parseXml2JSON(xml) {
+  if (!xml || typeof xml !== 'string') return {};
   
 }
