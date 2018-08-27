@@ -20,7 +20,12 @@ router.get('/', async (req, res) => {
     res.send('mismatch');
   }
 }).post('/', (req, res) => {
-  logger.info(`receive message: ${JSON.stringify(req)}`)
+  req.on('data', (data) => {
+    console.log(data)
+  })
+  req.on('end', () => {
+    console.log('end')
+  })
   res.send('receive messages')
 }).get('/token', async (req, res) => {
   res.send('token')
