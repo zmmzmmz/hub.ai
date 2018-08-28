@@ -37,7 +37,7 @@ router.get('/', async (req, res) => {
       console.log(result)
       if (result.MsgType === 'text') {
         try {
-          const answer = await ai.fetchAnswer(result.Content)
+          const answer = await ai.fetchAnswer({query: result.Content})
           console.log(answer)
         } catch (e) {
           console.log(e)
