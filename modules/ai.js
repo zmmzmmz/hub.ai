@@ -23,10 +23,11 @@ class AI {
    * @param state <String | JSON> 用户自定义状态
    * @returns {PromiseLike<T> | Promise<T>}
    */
-  fetchAnswer ({query = '', segmented = 0, replaced = 1, session = '', state}) {
+  fetchAnswer ({query = '', segmented = 0, replaced = 1, session = 'D389A6616BD7227C0D92F3CCC1A3867C', state}) {
     return axios.post(`http://www.yige.ai/v1/query`, {
       token: this.options.token,
-      query
+      query,
+      session_id: session
     }).then(data => {
       return data.data
     })
