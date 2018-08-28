@@ -2,6 +2,7 @@ const express = require('express');
 const crypto = require('crypto');
 const logger = require('../utils/logger');
 const xml2js = require('xml2js');
+const msg = require('../modules/messages');
 const axios = require('axios');
 const router = express.Router();
 const token = 'weixin';
@@ -30,8 +31,8 @@ router.get('/', async (req, res) => {
     xml2js.parseString(msgXml, {explicitArray : false}, (err, result) => {
       if (err) res.status(500).send(err.message)
       result = result.xml
-      console.log(result, req)
-      res.send('receive messages')
+      const message = msg(result.FromUserName, result.ToUserName, '你好，作者')
+      res.send(message)
     })
   })
 }).get('/token', async (req, res) => {
