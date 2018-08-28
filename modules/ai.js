@@ -5,7 +5,6 @@ try {
   config = yaml.load('../cert.yml')
 } catch (e) {
   console.log(e)
-  return
 }
 
 class AI {
