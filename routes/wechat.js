@@ -31,7 +31,7 @@ router.get('/', async (req, res) => {
     xml2js.parseString(msgXml, {explicitArray : false}, (err, result) => {
       if (err) res.status(500).send(err.message)
       result = result.xml
-      const message = msg(result.FromUserName, result.ToUserName, '你好，作者')
+      const message = msg.txtMsg(result.FromUserName, result.ToUserName, '你好，作者')
       res.send(message)
     })
   })
