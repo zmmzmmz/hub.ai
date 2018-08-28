@@ -1,8 +1,9 @@
 const axios = require('axios');
 const yaml = require('yamljs');
+const path = require('path');
 let config;
 try {
-  config = yaml.load('../cert.yml')
+  config = yaml.load(path.join(__dirname, '..', 'cert.yml'));
 } catch (e) {
   console.log(e)
 }
