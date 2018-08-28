@@ -35,15 +35,16 @@ router.get('/', async (req, res) => {
       if (err) res.status(500).send(err.message)
       result = result.xml
       console.log(result)
+      let reply = '你好，作者'
       if (result.MsgType === 'text') {
         try {
           const answer = await ai.fetchAnswer({query: result.Content})
-          console.log(answer)
+          reply = answer.answer || reply
         } catch (e) {
           console.log(e)
         }
       }
-      const message = msg.txtMsg(result.FromUserName, result.ToUserName, '你好，作者')
+      const message = msg.txtMsg(result.FromUserName, result.ToUserName, reply)
       res.send(message)
     })
   })
