@@ -1,6 +1,7 @@
 const express = require('express');
 const crypto = require('crypto');
 const logger = require('../utils/logger');
+const xml2js = require('xml2js');
 const axios = require('axios');
 const router = express.Router();
 const token = 'weixin';
@@ -20,13 +21,19 @@ router.get('/', async (req, res) => {
     res.send('mismatch');
   }
 }).post('/', (req, res) => {
+  let buffer = []
   req.on('data', (data) => {
-    console.log(data)
+    buffer.push(data)
   })
   req.on('end', () => {
-    console.log('end')
+    const msgXml = Buffer.concat(buffer).toString('utf-8');
+    xml2js.parseString(msgXml, {explicitArray : false}, (err, result) => {
+      if (err) res.status(500).send(err.message)
+      result = result.xml
+      console.log(result, req)
+      res.send('receive messages')
+    })
   })
-  res.send('receive messages')
 }).get('/token', async (req, res) => {
   res.send('token')
 })
