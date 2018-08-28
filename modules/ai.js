@@ -1,7 +1,15 @@
 const axios = require('axios');
+const yaml = require('yamljs');
+let config;
+try {
+  config = yaml.load('../cert.yml')
+} catch (e) {
+  console.log(e)
+  return
+}
 
 class AI {
-  constructor () {
+  constructor (options) {
     this.options = options
   }
 
@@ -18,9 +26,9 @@ class AI {
   fetchAnswer ({query = '', segmented = 0, replaced = 1, session = '', state}) {
     return axios.post(`http://www.yige.ai/v1/query`, {
       token: this.options.token,
-      query: query
+      query
     }).then(data => {
-      return data
+      return data.data
     })
   }
 
@@ -54,4 +62,4 @@ class AI {
   }
 }
 
-module.exports = new AI()
+module.exports = new AI({token: config.ai.token, ak: config.ai.ak})

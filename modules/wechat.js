@@ -1,3 +1,6 @@
+const fs = require('fs');
+const utils = require('utils');
+
 /**
  * Wechat 微信配置实例
  */
